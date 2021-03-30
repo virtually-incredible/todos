@@ -1,3 +1,11 @@
+function valid_task(x) {
+  var a, b, c;
+  a = _.isDate(x['Due date']);
+  b = _.isDate(x['Start date']);
+  c = ne(x['Executor']);
+  return  a && b && c;
+}
+
 //::Bool->Bool
 not = function(x) {return !x;};
 

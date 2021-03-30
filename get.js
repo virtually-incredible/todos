@@ -20,7 +20,7 @@ get.settings = function(sheet) {
 
 get.tasks = function(sheet) {
   return ssa.get_vh(sheet)
-    .filter(function(x) {return _.isDate(x['Due date']) && _.isDate(x['Start date']);})
+    .filter(valid_task)
     .map(function(x) {
       x['Duration'] = J_D(x['Due date']) - J_D(x['Start date']);
       return x;});
