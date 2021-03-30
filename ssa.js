@@ -172,7 +172,7 @@
   };
 
   get_headers = function(sheet) {
-    return sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0].map(lc);
+    return sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
   };
 
   ss_accessor = {};
