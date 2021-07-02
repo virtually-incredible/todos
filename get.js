@@ -20,10 +20,7 @@ get.settings = function(sheet) {
 
 get.tasks = function(sheet) {
   return ssa.get_vh(sheet)
-    .filter(valid_task)
-    .map(function(x) {
-      x['Duration'] = J_D(x['Due date']) - J_D(x['Start date']);
-      return x;});
+    .filter(valid_task);
 };
 
 //GFolder->[Spreadsheet]

@@ -42,8 +42,9 @@ gen.format = function(value, bg, fc, fw, ha, wrap, va) {
   };
 };
 
-gen.ex_map = function(xs, threshold) {
-  var ex_map;
+gen.ex_map = function(xs, today) {
+  var ex_map, threshold;
+  threshold = J_I(today);
   ex_map = {};
   xs.forEach(function(x) {
     var executor;
@@ -55,7 +56,7 @@ gen.ex_map = function(xs, threshold) {
     if (x['Done']) {
       ex_map[executor]['done'].push(x['Description']);
     } else {
-      if (x['Duration'] <= threshold) {
+      if (J_I(x['Due date']) < threshold) {
         ex_map[executor]['overdue'].push(x['Description']);
       } else {
         ex_map[executor]['ongoing'].push(x['Description']);

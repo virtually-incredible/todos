@@ -28,11 +28,11 @@ function on_edit(sheet, row, col) {
 }
 
 function refresh_summary() {
-  var sheet, xs, ex_map, threshold, settings, m, dest_sheet;
-  threshold = 7;
+  var sheet, xs, ex_map, today, settings, m, dest_sheet;
+  today = new Date();
   sheet = get.sheet('input');
   xs = get.tasks(sheet);
-  ex_map = gen.ex_map(xs, threshold);
+  ex_map = gen.ex_map(xs, today);
   settings = get.settings(get.sheet('settings'));
   m = gen.result_matrix(ex_map, settings);
   dest_sheet = get.sheet('summary');
