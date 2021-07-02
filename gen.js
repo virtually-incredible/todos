@@ -1,9 +1,11 @@
 var gen = {};
 
 gen.result_matrix = function(ex_map, settings) {
-  var m, maximum, ongoings, overdues, dones, ex_h;
+  var m, maximum, executors;
   m = [];
-  for (var executor in ex_map) {
+  executors = keys(ex_map).sort();
+  executors.forEach(function(executor) {
+    var ongoings, overdues, dones, ex_h;
     ex_h = _.extend({}, {Value : executor}, settings['executor']);
     ongoings = ex_map[executor]['ongoing'].map(function(x) {
       return _.extend({}, {Value : x}, settings['ongoing']);
@@ -19,7 +21,7 @@ gen.result_matrix = function(ex_map, settings) {
       .concat(overdues)
       .concat(dones)
     );
-  }
+  });
   maximum = max(m.map(function(r) {return r.length;}));
   m = m.map(function(r) {
     return r
