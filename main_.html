@@ -1,0 +1,12 @@
+<!--
+   main template v0.1
+-->
+<script>
+STATE = {};
+hide_loading_circle();
+
+html = 'Loading data...';
+$('#app').html(html);
+request({type:'filter_settings'});
+
+</script>

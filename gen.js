@@ -1,5 +1,13 @@
 var gen = {};
 
+gen.months = function(date, n) {
+  var fm_to_s, fm, fms;
+  fm_to_s = function(fm) {return MONTHS[fm[0]] + ' ' + fm[1];};
+  fm = dnt.get_full_month(date);
+  fms = _.range(0, 12).map(function(i) {return dnt.add_months(fm, i);});
+  return fms.map(fm_to_s);
+};
+
 gen.result_matrix = function(ex_map, settings) {
   var m, maximum, executors;
   m = [];

@@ -1,3 +1,7 @@
+function excel_date(date) {
+  return J_D(date) - 693594;//1899-12-30
+}
+
 function valid_task(x) {
   var a, b, c;
   a = _.isDate(x['Due date']);

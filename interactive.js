@@ -1,9 +1,15 @@
 function onOpen() {
   var submenu = [
-    {name : "Refresh summary", functionName : "refresh_summary"}
-
+    {name : "Refresh summary", functionName : "refresh_summary"},
+    {name : "Open sidebar", functionName : "open_sidebar"}
   ];
   SpreadsheetApp.getActiveSpreadsheet().addMenu('More actions', submenu);
+}
+
+function open_sidebar() {
+  var html, sheet;
+  html = HtmlService.createTemplateFromFile('sidebar').evaluate().setTitle('Sidebar');
+  SpreadsheetApp.getUi().showSidebar(html);
 }
 
 function onEdit(e) {

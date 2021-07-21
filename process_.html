@@ -1,0 +1,29 @@
+<script>
+process = {};
+
+process.filter_settings = function(data) {
+  var month_selector, options, executors_selector, statuses, html, action_button;
+  
+  options = data.months.map(function(x){return wrap.in_tag('option',{}, x);});
+  month_selector = wrap.in_tag('div', {}, 'Month:') + wrap.in_tag('select', {id:'months'}, options);
+  
+  options = data.executors.map(function(x){return wrap.in_tag('option',{}, x);});
+  executors_selector = wrap.in_tag('div', {}, 'Executor:') + wrap.in_tag('select', {id:'executors'}, options);
+
+  options = ['All', 'Pending', 'Overdue', 'Ongoing', 'Done'].map(function(x){return wrap.in_tag('option',{}, x);});
+  statuses = wrap.in_tag('div', {}, 'Status:') + wrap.in_tag('select', {id:'statuses'}, options);
+  
+  action_button = wrap.in_tag('button', {class:'button', id:'action'}, 'Apply');
+
+  html = [executors_selector, statuses, month_selector, action_button].join('<br/>');
+  $('#app').html(html);
+  $('#action').click(function() {
+    var month, executor, status;
+    month = $('#months :selected').text();
+    executor = $('#executors :selected').text();
+    status = $('#statuses :selected').text();
+    request({type:'apply', data:{month:month, executor:executor, status:status}});
+  });
+}
+
+</script>

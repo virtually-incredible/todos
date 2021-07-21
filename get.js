@@ -1,5 +1,11 @@
 var get = {};
 
+get.executors = function(sheet) {
+  var m;
+  m = sheet.getDataRange().getValues();
+  return m.map(function(r) {return r[0];});
+};
+
 get.settings = function(sheet) {
   var sheet, m, res, source_sheet;
   res = {};
